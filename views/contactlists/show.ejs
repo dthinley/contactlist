@@ -1,0 +1,24 @@
+<% include ../partials/header %>
+
+<div class="container">
+<h1>This is show pages</h1>
+
+<%=contactlist.first_name + " " + contactlist.last_name%>
+<%=contactlist.address%>
+<%=contactlist.city%>
+<%=contactlist.zip%>
+<%=contactlist.email%>
+<%=contactlist.phone%>
+<p>
+          <em>Submitted by: <a href="/users/<%= contactlist.author.id %>"><%= contactlist.author.username %></a>, </em>
+        </p>
+<% if(currentUser && contactlist.author.id.equals(currentUser._id)){ %>
+<a class="btn btn-warning" href="/contactlists/<%= contactlist._id%>/edit">Edit</a>
+
+<form action="/contactlists/<%= contactlist._id%>?_method=DELETE" method="POST">
+	<button class = "btn btn-danger">Delete</button>
+	
+</form>
+<% } %>
+</div>
+<% include ../partials/footer %>

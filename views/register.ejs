@@ -1,0 +1,32 @@
+<% include ./partials/header.ejs %>
+<div class="container">
+<div class=" grid">
+<div class="column">
+   <h1>Register</h1>
+   <p>Don't have an account? Sign up now. It's free, and always will be.</p>
+   <form class="ui large form" action="/register" method ="POST">
+      <div class="field">
+         <input type="text" name="username" placeholder="username">
+      </div>
+      <div class="field">
+         <input type="password" name="password" placeholder="password">
+      </div>
+      <div class="field">
+         <input type="text" name="avatar" placeholder="avatar:url">
+      </div>
+      <div class="field">
+         <input type="text" name="firstName" placeholder="first name">
+      </div>
+      <div class="field">
+         <input type="text" name="lastName" placeholder="last name">
+      </div>
+      <div class="field">
+         <input type="email" name="email" placeholder="your email">
+      </div>
+      <button class="ui fluid large teal submit button">Register</button>
+   </form>
+   <div class="ui message">
+      Already have account? &nbsp<a href="/login">Login</a> 
+   </div>
+</div>
+<% include ./partials/footer.ejs %>
