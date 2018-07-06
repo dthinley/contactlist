@@ -3,9 +3,11 @@ var router	= express.Router();
 var Contactlist = require("../models/contactlist");
 var middleware = require("../middleware");
 
+var User 		= require("../models/user");
+
 
 //INDEX - show all campgrounds
-router.get("/contactlists", function(req, res){
+router.get("/", function(req, res){
 
 	//get all contactlists from db
 	Contactlist.find({}, function(err, allContactlists){
@@ -20,7 +22,7 @@ router.get("/contactlists", function(req, res){
 });
 
 // CREATE ROUTES-add new data to database
-router.post("/contactlists", middleware.isLoggedIn, function(req, res){
+router.post("/", middleware.isLoggedIn, function(req, res){
 	//get data from form and add to contactlist array
 	var first_name = req.body.first_name;
 	var last_name = req.body.last_name;
@@ -50,13 +52,13 @@ router.post("/contactlists", middleware.isLoggedIn, function(req, res){
 });
 
 //NEW -SHOW FOR TO CREATE NEW CONTACT
-router.get("/contactlists/new", middleware.isLoggedIn, function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
 	res.render("contactlists/new");
 });
 
 
 //show page:- showing more info about one contact
-router.get("/contactlists/:id", function(req, res){
+router.get("/:id", function(req, res){
 	//find the contactlist with id
 	Contactlist.findById(req.params.id, function(err, foundContactlist){
 		if(err){
@@ -70,18 +72,18 @@ router.get("/contactlists/:id", function(req, res){
 });
 
 //EDIT ROUTE
-router.get("/contactlists/:id/edit", middleware.checkContactlistOwnership, function(req, res){
+router.get("/:id/edit", middleware.checkContactlistOwnership, function(req, res){
 		Contactlist.findById(req.params.id, function(err, foundContactlist){
 			res.render("contactlists/edit", {contactlist: foundContactlist});
 		});
 	});
 
 //UPDATE ROUTE
-router.put("/contactlists/:id", middleware.checkContactlistOwnership, function(req, res){
+router.put("/:id", middleware.checkContactlistOwnership, function(req, res){
 	//find and update the correct contactlist
 	Contactlist.findByIdAndUpdate(req.params.id, req.body.contactlist, function(err, updateContactlist){
 		if(err){
-			res.redirect("/contactlists");
+			res.redirect("back");
 		} else {
 			res.redirect("/contactlists/" + req.params.id);
 		}
@@ -90,7 +92,7 @@ router.put("/contactlists/:id", middleware.checkContactlistOwnership, function(r
 
 
 //DESTORY CONTACTLISTS
-router.delete("/contactlists/:id", middleware.checkContactlistOwnership, function(req, res){
+router.delete("/:id", middleware.checkContactlistOwnership, function(req, res){
 	Contactlist.findByIdAndRemove(req.params.id, function(err){
 		if(err){
 			res.redirect("/contactlists");
