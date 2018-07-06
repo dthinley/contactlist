@@ -43,8 +43,9 @@ router.get("/login", function(req, res){
 //handling login logic
 router.post("/login", passport.authenticate("local", 
 	{
-		successRedirect: "contactlists",
+		successRedirect: "/users/show",
 		failureRedirect: "/login"
+		
 		
 	}), function(req, res){
 });
@@ -53,11 +54,11 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
 	req.logout();
 	req.flash("success", "You are logged out!")
-	res.redirect("/contactlists")
+	res.redirect("/")
 });
 
 /// USER PROFILE
-router.get("/contactlists/users/:id", function(req, res) {
+router.get("/users/:id", function(req, res) {
   User.findById(req.params.id, function(err, foundUser) {
     if(err) {
       req.flash("error", "Something went wrong here.");
@@ -73,5 +74,8 @@ router.get("/contactlists/users/:id", function(req, res) {
   });
 });
 
-
+//show profile page route
+router.get("/users/show", function(req, res){
+    res.render("users/show");
+});
 module.exports = router;
