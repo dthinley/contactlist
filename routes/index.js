@@ -57,6 +57,14 @@ router.get("/logout", function(req, res){
 	res.redirect("/")
 });
 
+
+
+//show profile page route
+router.get("/users/show", function(req, res){
+      res.redirect("users/show"+ req.user._id);
+   
+});
+
 /// USER PROFILE
 router.get("/users/:id", function(req, res) {
   User.findById(req.params.id, function(err, foundUser) {
@@ -74,8 +82,5 @@ router.get("/users/:id", function(req, res) {
   });
 });
 
-//show profile page route
-router.get("/users/show", function(req, res){
-    res.render("users/show");
-});
+
 module.exports = router;
