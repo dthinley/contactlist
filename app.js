@@ -12,7 +12,7 @@ var express 		= require("express"),
 
 //list of routes
 var contactlistRoutes 	= require("./routes/contactlists"),
-	indexRoutes			= require("./routes/index")
+	indexRoutes			= require("./routes/index");
 
 
 mongoose.connect("mongodb://localhost/contact");
@@ -38,13 +38,15 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next){
 	res.locals.currentUser = req.user;
+	res.locals.user = req.user;
+	res.locals.contactlists =req.contactlists;
 	res.locals.error = req.flash("error");
 	res.locals.success = req.flash("success");
 	next();
 });
 
-app.use(indexRoutes);
-app.use(contactlistRoutes);
+app.use("/", indexRoutes);
+app.use("/contactlists", contactlistRoutes);
 
 
 
