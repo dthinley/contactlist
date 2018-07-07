@@ -61,7 +61,8 @@ router.get("/logout", function(req, res){
 
 //show profile page route
 router.get("/users/show", function(req, res){
-      res.redirect("users/show"+ req.user._id);
+	console.log("users")
+      res.redirect("/users/"+req.user._id﻿ );
    
 });
 
