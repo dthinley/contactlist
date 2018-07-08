@@ -14,7 +14,7 @@ var express 		= require("express"),
 var contactlistRoutes 	= require("./routes/contactlists"),
 	indexRoutes			= require("./routes/index");
 
-
+mongoose.connect("mongodb://dorjee:Contact59@ds129831.mlab.com:29831/contactcamp"); 
 //mongoose.connect("mongodb://localhost/contact");
 
 app.use(bodyParser.urlencoded({extended: true}));
