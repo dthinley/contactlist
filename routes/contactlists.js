@@ -1,9 +1,8 @@
-var express = require("express");
+var express 	= require("express");
 var router	= express.Router();
 var Contactlist = require("../models/contactlist");
-var middleware = require("../middleware");
-
-var User 		= require("../models/user");
+var middleware	 = require("../middleware");
+var User 	= require("../models/user");
 
 
 //INDEX - show all campgrounds
