@@ -14,9 +14,14 @@ var express 		= require("express"),
 var contactlistRoutes 	= require("./routes/contactlists"),
 	indexRoutes			= require("./routes/index");
 
-mongoose.connect("mongodb://dorjee:Contact59@ds129831.mlab.com:29831/contactcamp"); 
-//mongoose.connect("mongodb://localhost/contact");
+var port=process.env.PORT || 3000;
+app.listen(port || 3000,function(){
+ console.log('Server has started')
+});
 
+
+//mongoose.connect("mongodb://localhost/contact");
+mongoose.connect("mongodb://<user_name>:<password>@ds129831.mlab.com:29831/contactcamp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -54,10 +59,4 @@ app.use("/contactlists", contactlistRoutes);
 app.listen(3000, function(){
 	console.log("Server up and running..");
 });
-
-
-
-
-
-
 
