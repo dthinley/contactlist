@@ -1,2 +1,5 @@
-# contactlist
-Contact management application made with Node.js, express, mongodb, passport
+### Contactlist
+Contactlist is contact management application made with Node.js, express, mongodb.
+
+### Requirements
+node.js
