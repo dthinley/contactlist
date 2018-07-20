@@ -1,5 +1,5 @@
 ### Contactlist
-Contactlist is contact management application made with Node.js, express, mongodb. User can regiter and create profile page. User can add, edit and delete their contact in easy to use function. This project is a RESTful web application utilizing the node.js as backend, and express framework which accesses a mongodb database. Passport is use for authentication for further CRUD functionality on the application. Working demo: https://quiet-citadel-39255.herokuapp.com/
+Contactlist is a contact management application made with Node.js, express, mongodb. A user can register and create a profile page. A user can add, edit and delete their contact in easy to use function. This project is a RESTful web application utilizing the node.js as a backend, and express framework which accesses a mongodb database. Passport is use for authentication for further CRUD functionality on the application. Working demo: https://quiet-citadel-39255.herokuapp.com/
 ### Installing and Setup Environment
 To run this project, following have to installed:
 1. node.js
