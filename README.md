@@ -13,7 +13,12 @@ Using git bash or cmd window or terminal in mac:
 Go to project folder by:
 	$ cd project folder
 
+## 1. Create a new user named grader and grant this user sudo permissions
+
+	$ sudo adduser grader
+	
 Run the server up by:
   node app.js
+  
 
 ### Access and test your application by visiting http://localhost:3000.
